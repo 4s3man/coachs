@@ -1,0 +1,66 @@
+{
+    "name": "jakub-kułaga/coachs",
+    "description": "Wordpress Plugin Boilerplate with steroids!",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "Jakub Kułaga",
+            "email": "kuba.kulaga.sv7@gmail.com",
+            "homepage": "https://github.com/4s3man"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "composer\/installers": "1.x",
+        "wpbp\/pointerplus": "1.0.*",
+        "wpbp\/cronplus": "1.0.*",
+        "wpbp\/widgets-helper": "1.0.*",
+        "wpbp\/fakepage": "1.0.*",
+        "wpbp\/template": "1.0.*",
+        "wpbp\/debug": "1.1.*",
+        "wpbp\/cpt_columns": "1.0.*",
+        "wpbp\/language": "1.0.*",
+        "seravo\/wp-custom-bulk-actions": "dev-master",
+        "julien731\/wp-review-me": "dev-develop",
+        "johnbillion\/extended-cpts": "4.3.*",
+        "freemius\/wordpress-sdk": "2.3.*",
+        "yoast\/i18n-module": "3.1.*",
+        "cmb2\/cmb2": "2.7.*",
+        "origgami\/cmb2-grid": "dev-master",
+        "stevegrunwell\/wp-cache-remember": "dev-master",
+        "micropackage\/requirements": "^1.0",
+        "wpdesk\/wp-notice": "^3.1",
+        "yahnis-elsts\/plugin-update-checker": "^4.9",
+        "webdevstudios/cmb2-attached-posts": "^1.2"
+    },
+    "require-dev": {
+        "szepeviktor\/phpstan-wordpress": "^0.6.0",
+        "szepeviktor\/phpstan-phpdoc": "^0.2.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Coachs\\Backend\\": "backend",
+            "Coachs\\Frontend\\": "frontend",
+            "Coachs\\Ajax\\": "ajax",
+            "Coachs\\Internals\\": "internals",
+            "Coachs\\Integrations\\": "integrations",
+            "Coachs\\Engine\\": "engine"
+        },
+        "files": [
+            "vendor\/wp-custom-bulk-actions\/custom-bulk-actions.php"
+        ]
+    },
+    "extra": {
+        "installer-paths": {
+            "vendor\/{$name}\/": [
+                "cmb2\/cmb2",
+                "origgami\/cmb2-grid",
+                "stevegrunwell\/wp-cache-remember",
+                "seravo\/wp-custom-bulk-actions"
+            ]
+        }
+    },
+    "homepage": "https:\/\/github.com\/WPBP\/WordPress-Plugin-Boilerplate-Powered"
+}

@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * Plugin name
+ *
+ * @package   Plugin_name
+ * @author    Jakub Kułaga <kuba.kulaga.sv7@gmail.com>
+ * @copyright 2020 Jakub Kułaga
+ * @license   GPL 3.0+
+ * @link      https://github.com/4s3man
+ */
+namespace Coachs\Internals;
+
+use \Coachs\Engine;
+
+/**
+ * Transient used by the plugin
+ */
+class Transient extends Engine\Base {
+
+	/**
+	 * Initialize the class.
+	 *
+	 * @return void
+	 */
+	public function initialize() {
+		parent::initialize();
+	}
+
+	/**
+	 * This method contain an example of caching a transient with an external request.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return object
+	 */
+	public function transient_caching_example() {
+		$key = 'placeholder_json_transient';
+
+		// Use wp-cache-remember package to retrive or save in transient
+		return remember_transient(
+            $key,
+            function () use ( $key ) {
+				// If there's no cached version we ask
+				$response = wp_remote_get( 'https://jsonplaceholder.typicode.com/todos/' );
+				if ( is_wp_error( $response ) ) {
+					// In case API is down we return the last successful count
+					return;
+				}
+
+				// If everything's okay, parse the body and json_decode it
+				return json_decode( wp_remote_retrieve_body( $response ) );
+			},
+            DAY_IN_SECONDS
+            );
+	}
+
+	/**
+	 * Print the transient content
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return void
+	 */
+	public function print_transient_output() {
+		$transient = $this->transient_caching_example();
+		echo '<div class="siteapi-bridge-container">';
+		foreach ( $transient as &$value ) {
+			echo '<div class="siteapi-bridge-single">';
+			// $transient is an object so use -> to call children
+			echo '</div>';
+		}
+
+		echo '</div>';
+	}
+
+}
+
