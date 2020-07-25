@@ -20,6 +20,8 @@ use \Coachs\Integrations\CMB;
  */
 class PostTypes extends Engine\Base
 {
+	const POST_TYPE = 'coachs';
+
 	/**
 	 * Initialize the class.
 	 *
@@ -85,7 +87,7 @@ class PostTypes extends Engine\Base
 	{
 		// Create Custom Post Type https://github.com/johnbillion/extended-cpts/wiki
 		$tax = register_extended_post_type(
-			'coachs',
+			self::POST_TYPE,
 			array(
 				'label'                 => __('Coach', C_TEXTDOMAIN),
 				'description'           => __('Coachs', C_TEXTDOMAIN),

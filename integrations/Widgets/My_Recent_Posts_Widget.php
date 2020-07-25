@@ -182,12 +182,12 @@ class My_Recent_Posts_Widget extends \WPH_Widget
 	{
 		$out = $args['before_widget'];
 
-		$out .= 'elo kurwa';
-
 		// And here do whatever you want
 		$out .= $args['before_title'];
 		$out .= $instance['title'];
 		$out .= $args['after_title'];
+
+		var_dump($this);
 
 		// Here you would get the most recent posts based on the selected amount: $instance['amount']
 		// Then return those posts on the $out variable ready for the output

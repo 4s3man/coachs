@@ -77,6 +77,7 @@ $requirements = new \Micropackage\Requirements\Requirements(
 		'plugins'            => array(
 			array('file' => 'cmb2-attached-posts/cmb2-attached-posts-field.php', 'name' => 'CMB2 Field Type: Attached Posts', 'version' => '1.2.7'),
 			array('file' => 'the-events-calendar/the-events-calendar.php', 'name' => 'The Events Calendar', 'version' => '5.1.4'),
+			array('file' => 'timber-library/timber.php', 'name' => 'Timber', 'version' => '1.17.0'),
 		),
 	)
 );

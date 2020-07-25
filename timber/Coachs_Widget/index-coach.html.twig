@@ -1,0 +1,40 @@
+<div class="coach">
+    <div class="coach__img">
+        <img src="{{ coach.thumbnail.src('medium') }}" alt="">
+    </div>
+    <h3>{{ coach.post_title }}</h3>
+    <div class="coach__details">
+        <p class="coach__quote">
+            {% set quote = coach.meta('_coachs_cmb_quote') %}
+            {% if quote %}
+                <q>{{ quote }}</q>
+            {% endif %}
+        </p>
+        <p class="coach__content">{{coach.post_content}}</p>
+
+        {% set trainings =  coach.meta('_coachs_cmb_trainings') %}
+        {% if trainings %}
+        <div class="coach__trainings">
+            <h6>{{ __('coachs_traings', C_TEXTDOMAIN) }}</h6>
+
+            {% for training_id in trainings %}
+            <div class="training">
+                <a href="{{ function('get_permalink', training_id) }}">
+                    <h6 class="training__title">
+                        {{ function('get_the_title', training_id) }}
+                    </h6>
+
+                    {# todo load this image with by lazyloading #}
+                    <div class="training__img">
+                        {{ function('get_the_post_thumbnail', training_id) }}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+        {% endif %}
+        
+    </div>
+
+</div>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Coachs
  *
@@ -16,7 +17,7 @@
  *
  * @return array
  */
-function c_get_settings() {
-	return apply_filters( 'c_get_settings', get_option( C_TEXTDOMAIN . '-settings' ) );
+function c_get_settings()
+{
+	return apply_filters('c_get_settings', get_option(C_TEXTDOMAIN . '-settings'));
 }
-
