@@ -1,1 +1,1 @@
-{"version":3,"sources":["webpack:///./assets/coachsWidget/scss/coachs.scss"],"names":[],"mappings":"AAAA,QAAQ,qB","file":"css/main.css","sourcesContent":[".coachs{background-color:red}"],"sourceRoot":""}
+{"version":3,"sources":["webpack:///./assets/coachsWidget/scss/coachs.scss"],"names":[],"mappings":"AAAA,mBAAmB,yBAAyB,sBAAsB,qBAAqB,iB","file":"css/main.css","sourcesContent":[".autoprefixer-test{-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}"],"sourceRoot":""}

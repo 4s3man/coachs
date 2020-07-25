@@ -1,5 +1,7 @@
 const path = require('path'),
-    MiniCssExtractPlugin = require('mini-css-extract-plugin');
+    MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+    autoprefixer = require('autoprefixer'),
+    webpack = require('webpack');
 
 module.exports = {
     entry: "./assets/coachsWidget.js",
@@ -20,14 +22,10 @@ module.exports = {
                         publicPath: path.resolve(__dirname, 'assets/css'),
                       },
                     },
-                    'css-loader', 'sass-loader'
+                    'css-loader',
+                    'sass-loader',
+                    'postcss-loader'
                   ],
-            },
-            {
-                enforce: 'pre',
-                exclude: /node_modules/,
-                test: /\.js$/,
-                loader: 'eslint-loader'
             },
             {
                 test: /\.js$/,
@@ -36,5 +34,14 @@ module.exports = {
         ]
     }
     ,
-    plugins: [new MiniCssExtractPlugin({filename: 'css/[name].css'})]
+    plugins: [
+        new MiniCssExtractPlugin({filename: 'css/[name].css'}),
+        new webpack.LoaderOptionsPlugin({
+            options: {
+                postcss: [
+                    autoprefixer()
+                ]
+            }
+        })
+    ]
 };
