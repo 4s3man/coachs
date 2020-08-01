@@ -1,40 +1,20 @@
-<div class="coach">
-    <div class="coach__img">
-        <img src="{{ coach.thumbnail.src('medium') }}" alt="">
-    </div>
-    <h3>{{ coach.post_title }}</h3>
-    <div class="coach__details">
-        <p class="coach__quote">
-            {% set quote = coach.meta('_coachs_cmb_quote') %}
-            {% if quote %}
-                <q>{{ quote }}</q>
-            {% endif %}
-        </p>
-        <p class="coach__content">{{coach.post_content}}</p>
-
-        {% set trainings =  coach.meta('_coachs_cmb_trainings') %}
-        {% if trainings %}
-        <div class="coach__trainings">
-            <h6>{{ __('coachs_traings', C_TEXTDOMAIN) }}</h6>
-
-            {% for training_id in trainings %}
-            <div class="training">
-                <a href="{{ function('get_permalink', training_id) }}">
-                    <h6 class="training__title">
-                        {{ function('get_the_title', training_id) }}
-                    </h6>
-
-                    {# todo load this image with by lazyloading #}
-                    <div class="training__img">
-                        {{ function('get_the_post_thumbnail', training_id) }}
-                    </div>
-                </a>
-            </div>
-            {% endfor %}
-
+<div class="inline-block text-center ease-in-out duration-100 transform hover:scale-110 m-3 ">
+    <a href="{{ coach.link }}">
+        <div class="mx-auto flex justify-center">
+            <img
+                class="rounded-full h-20 w-20 md:h-40 md:w-40 shadow-md"
+                src="{{ coach.thumbnail.src('small') }}" alt=""
+            >
         </div>
-        {% endif %}
-        
-    </div>
-
+        <div class="coach__details">
+            <h3 class="font-semibold">{{ coach.post_title }}</h3>
+            <p class="coach__quote">
+                {% set quote = coach.meta('_coachs_cmb_quote') %}
+                {% if quote %}
+                    <q>{{ quote }}</q>
+                {% endif %}
+            </p>
+            <p class="coach__content">{{coach.post_content|excerpt(30)}}</p>
+        </div>
+    </a>
 </div>

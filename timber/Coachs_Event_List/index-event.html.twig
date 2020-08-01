@@ -1,0 +1,27 @@
+<div class="px-5 py-3 bg-gray-300 shadow-2xl border-gray-900 rounded-md m-3 bg-opacity-50 md:flex md:flex-row">
+    <a href="{{ event.link }}">
+        <img class="mx-auto md:m-0" src="{{ event.thumbnail.src('medium') }}" alt="">
+    </a>
+    <div class="mx-3">
+        <h2 class="text-2xl font-semibold">{{ event.title }}</h2>
+        <span class="block sm:inline-block p-1 bg-green-200 shadow-xl rounded-md max font-semibold">{{ event.custom._EventStartDate|date('d-m-Y D') }}</span>
+        <span class="block sm:inline-block p-1 bg-green-300 shadow-xl rounded-md font-semibold">{{ event.custom._EventEndDate|date('Y-m-d D') }}</span>
+        <p class="mt-2">
+            {{ event.content|excerpt(25) }}
+        </p>
+        <button>
+            <a href="{{ event.link }}" 
+            class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-sm capitalize text-white font-medium rounded hover:text-white hover:bg-blue-700">
+                <span>{{ __('Go to event', domain) }}</span>
+                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                    <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+            </a>
+        </button>
+    </div>
+    <div class="flex justify-center text-center">
+        {% for coach in coachsByEventId[event.id] %}
+            {% include "Coachs_Event_List/index-event-coach.html.twig" %}
+        {% endfor %}
+    </div>
+</div>

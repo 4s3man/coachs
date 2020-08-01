@@ -20,6 +20,7 @@ use Timber\Timber;
  */
 class Coachs_Widget extends \WPH_Widget
 {
+	const TITLE_ID = 'title_id';
 	/**
 	 * Initialize the widget
 	 *
@@ -34,7 +35,21 @@ class Coachs_Widget extends \WPH_Widget
 			// 'options' => array( 'cache' => true )
 		);
 
-		$args['fields'] = [];
+		$args['fields'] = [
+			array(
+				// Field name/label
+				'name'     => __('Title', C_TEXTDOMAIN),
+				// Field description
+				'desc'     => __('Enter the widget title.', C_TEXTDOMAIN),
+				// Field id
+				'id'       => self::TITLE_ID,
+				// Field type ( text, checkbox, textarea, select, select-group, taxonomy, taxonomyterm, pages, hidden )
+				'type'     => 'text',
+				// Class, rows, cols
+				'class'    => 'widefat',
+				'filter'   => 'strip_tags|esc_attr',
+			),
+		];
 
 		$this->create_widget($args);
 	}
@@ -82,8 +97,12 @@ class Coachs_Widget extends \WPH_Widget
 			'order'    => 'ASC'
 		]);
 
-		Timber::$locations = C_PLUGIN_ROOT . '/timber';
-		Timber::render('Coachs_Widget/index.html.twig', ['coachs' => $coachs]);
+		$title = isset($instance[self::TITLE_ID]) ? $instance[self::TITLE_ID] : '';
+
+		Timber::render('Coachs_Widget/index.html.twig', [
+			'coachs' => $coachs,
+			'title' => $title
+		]);
 
 		echo $args['after_widget'];
 	}

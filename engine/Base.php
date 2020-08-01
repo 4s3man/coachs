@@ -9,12 +9,16 @@
  * @license   GPL 3.0+
  * @link      https://github.com/4s3man
  */
+
 namespace Coachs\Engine;
+
+use Timber\Timber;
 
 /**
  * Base skeleton of the plugin
  */
-class Base {
+class Base
+{
 
 	/**
 	 * @var array The settings of the plugin
@@ -24,9 +28,10 @@ class Base {
 	/**
 	 * Initialize the class
 	 */
-	public function initialize() {
+	public function initialize()
+	{
+		Timber::$locations = C_PLUGIN_ROOT . '/timber';
 		$this->settings = c_get_settings();
 		return true;
 	}
-
 }

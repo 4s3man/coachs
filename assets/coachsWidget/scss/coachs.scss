@@ -1,0 +1,32 @@
+$textColor: #666;
+$backgorund: #f5f5f5;
+
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins";
+
+@import "~bootstrap/scss/reboot";
+@import "~bootstrap/scss/jumbotron";
+@import "~bootstrap/scss/images";
+
+.helvetica {
+    letter-spacing: 2px;
+    word-wrap: break-word;
+    color: $textColor;
+}
+
+.coach {
+    &__img {
+        display: inline-block;
+        position: relative;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        border-radius: 50%;
+        border: 2px solid $textColor;
+        img {
+            height: auto;
+            width: 100%;
+          } 
+      }
+}

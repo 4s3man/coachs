@@ -1,0 +1,8 @@
+<div class="coachs-event-list">
+    <h2 class="text-center text-4xl">
+      {{ title }}
+    </h2>
+    {% for event in events %}
+      {% include "Coachs_Event_List/index-event.html.twig" %}
+    {% endfor %}
+</div>
