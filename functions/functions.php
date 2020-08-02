@@ -26,16 +26,21 @@ function c_get_settings()
  * Render coach
  */
 add_action('studium_nvc_after_content_with_event', function ($event) {
+
 	$coachs = Timber\Timber::get_posts([
-		'post_type' => Coachs\Internals\PostTypes::POST_TYPE,
 		'post_status' => 'publish',
 		'numberposts' => -1,
-		'order'    => 'ASC',
-		'meta_query' => [
-			'key' => Coachs\Integrations\CMB::COACHS_TRAININGS_ID,
-			'value' => $event->id,
-			'compare' => 'LIKE'
-		]
+		'post_type' => Coachs\Internals\PostTypes::POST_TYPE,
+		// 'meta_key' => Coachs\Integrations\CMB::COACHS_TRAININGS_ID,
+		// 'meta_value' => $event->id, //sprintf(':"%s";', $event->id),
+		// 'meta_compare' => 'LIKE'
+		'meta_query' => array(
+			array(
+				'key'     => Coachs\Integrations\CMB::COACHS_TRAININGS_ID,
+				'value'   => (string) $event->id,
+				'compare' => 'LIKE',
+			),
+		),
 	]);
 
 	Timber\Timber::render('Coachs_Widget/coachs-loop.html.twig', ['coachs' => $coachs]);
