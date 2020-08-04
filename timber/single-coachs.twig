@@ -17,7 +17,7 @@
         <article class="w-10/12 md:px-10 post-type-{{post.post_type}}" id="post-{{post.ID}}">
 			<section class="article-content flex items-center">
                 <img
-                    class="rounded-full h-25 w-25 md:h-40 md:w-40 shadow-md" 
+                    class="rounded-full h-25 w-25 md:h-56 md:w-56 shadow-md" 
                     src="{{ post.thumbnail.src('small') }}" alt=""
                 >
                 <div class="flex flex-col ml-4">
@@ -41,8 +41,13 @@
                 <h6 class="text-4xl text-center" >{{ __('coachs_trainings', C_TEXTDOMAIN) }}</h6>
             
                 {% for training_id in trainings %}
-                <div class="px-5 py-3 bg-gray-300 shadow-2xl border-gray-900 rounded-md m-3 bg-opacity-50 md:flex md:flex-row">                
-                    {{ function('get_the_post_thumbnail', training_id, 'medium', {'class': 'mx-auto md:m-0'} ) }}
+                <div class="px-5 py-3 bg-gray-300 shadow-2xl border-gray-900 rounded-md m-3 bg-opacity-50 md:flex md:flex-row text-center md:text-left">
+                    {% set triningLink = function('get_permalink', training_id) %}
+                    <div class="mt-3">
+                        <a class="w-full h-full" href="{{ triningLink }}">
+                            {{ function('get_the_post_thumbnail', training_id, 'medium', {'class': 'mx-auto '} ) }}
+                        </a>
+                    </div>
                 
                     <div class="mx-3">
                         <h2 class="text-2xl font-semibold">
@@ -56,13 +61,13 @@
                         <span class="block sm:inline-block p-1 bg-green-300 shadow-xl rounded-md font-semibold">
                              {% set endDate = function('get_post_meta', training_id, '_EventEndDate')[0]|default('') %}
                              {{ endDate|date('Y-m-d D') }}
-                        </span>
+                        </span>                        
                 
                         <p class="mt-2">
-                            {{ event.content|excerpt(25) }}
+                            {{ function('get_the_content', null, null, training_id)|excerpt(25) }}
                         </p>
                         <button>
-                            <a href="{{ function('get_permalink', training_id) }}" 
+                            <a href="{{ trainingLink }}" 
                             class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-sm capitalize text-white font-medium rounded hover:text-white hover:bg-blue-700">
                                 <span>{{ __('Go to event', domain) }}</span>
                                 <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">

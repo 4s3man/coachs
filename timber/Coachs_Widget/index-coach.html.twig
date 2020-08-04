@@ -1,4 +1,4 @@
-<div class="inline-block text-center ease-in-out duration-100 transform hover:scale-110 m-3 ">
+<div class="text-center ease-in-out duration-100 transform hover:scale-110 m-5 ">
     <a href="{{ coach.link }}">
         <div class="mx-auto flex justify-center">
             <img
@@ -14,7 +14,7 @@
                     <q>{{ quote }}</q>
                 {% endif %}
             </p>
-            <p class="coach__content">{{coach.post_content|excerpt(30)}}</p>
+            {# <p class="coach__content">{{coach.post_content|excerpt(15)}}</p> #}
         </div>
     </a>
 </div>
