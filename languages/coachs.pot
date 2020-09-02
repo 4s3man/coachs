@@ -411,3 +411,7 @@ msgstr ""
 #: templates/content-demo.php:4
 msgid "Insert here your custom HTML"
 msgstr ""
+
+#: templates/single-coachs.twig:41
+msgid "Kursy"
+msgstr ""
