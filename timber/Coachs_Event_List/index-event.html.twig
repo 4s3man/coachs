@@ -5,8 +5,8 @@
         </a>
         <div class="mx-3">
             <h2 class="text-2xl font-semibold">{{ event.title }}</h2>
-            <span class="block sm:inline-block p-1 bg-green-200 shadow-xl rounded-md max font-semibold">{{ event.custom._EventStartDate|date('d-m-Y D') }}</span>
-            <span class="block sm:inline-block p-1 bg-green-300 shadow-xl rounded-md font-semibold">{{ event.custom._EventEndDate|date('d-m-Y D') }}</span>
+            <span class="block sm:inline-block p-1 bg-green-200 shadow-xl rounded-md max font-semibold">{{ event.custom._EventStartDate|date() }}</span>
+            <span class="block sm:inline-block p-1 bg-green-300 shadow-xl rounded-md font-semibold">{{ event.custom._EventEndDate|date() }}</span>
                     {% for tag in post.tags %}
             <span class="m-2 shadow-xl rounded-md font-semibold p-1 bg-teal-200">{{ tag }}</span>
                 {% endfor %}

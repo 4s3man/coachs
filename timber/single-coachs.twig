@@ -56,11 +56,11 @@
                         
                         <span class="block sm:inline-block p-1 bg-green-200 shadow-xl rounded-md max font-semibold">
                             {% set startDate = function('get_post_meta', training_id, '_EventStartDate')[0]|default('') %}
-                            {{ startDate|date('Y-m-d D') }}
+                            {{ startDate|date() }}
                         </span>
                         <span class="block sm:inline-block p-1 bg-green-300 shadow-xl rounded-md font-semibold">
                              {% set endDate = function('get_post_meta', training_id, '_EventEndDate')[0]|default('') %}
-                             {{ endDate|date('Y-m-d D') }}
+                             {{ endDate|date() }}
                         </span>                        
                 
                         <p class="mt-2">
