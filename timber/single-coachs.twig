@@ -14,7 +14,7 @@
             {% endif %}
         </aside>
         
-        <article class="w-10/12 md:px-10 post-type-{{post.post_type}}" id="post-{{post.ID}}">
+        <article class="px-5 w-10/12 md:px-10 post-type-{{post.post_type}}" id="post-{{post.ID}}">
 			<section class="article-content flex items-center">
                 <img
                     class="rounded-full h-25 w-25 md:h-56 md:w-56 shadow-md" 
@@ -64,13 +64,14 @@
                         </span>                        
                 
                         <p class="mt-2">
-                            {{ function('get_the_content', null, null, training_id)|excerpt(25) }}
-                        </p>
+                            {% set content = function('get_the_content', null, null, training_id)|excerpt(25) %}
+                            {{ function('strip_shortcodes', content) }}
+                        </p>                    
                         <button>
-                            <a href="{{ trainingLink }}" 
-                            class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-sm capitalize text-white font-medium rounded hover:text-white hover:bg-blue-700">
-                                <span>{{ __('Go to event', domain) }}</span>
-                                <svg class="h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                            <a class="flex items-center mt-4 px-3 py-2 bg-blue-600 text-sm capitalize text-white font-medium rounded hover:text-white hover:bg-blue-700"
+                                href="{{ triningLink }}" >
+                                <span class="text-white">{{ __('Go to event', domain) }}</span>
+                                <svg class="text-white h-5 w-5 mx-2" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
                                     <path d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                 </svg>
                             </a>
